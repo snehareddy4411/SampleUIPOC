@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "productName": "Kiara Guest Chair",
+      "imageUrl": "https://secure.img1-fg.wfcdn.com/im/43738380/resize-h600-w600%5Ecompr-r85/1215/121583674/Jamari+Upholstered+Accent+Chair.jpg",
+      "productType": "Chair",
+      "price": 12000,
+      "description": "A Hybrid between a Chair and Sofa, Lounge Chair is not as heavy as a sofa or as lightweight as a chair either. Its slightly reclined back lets you lean back in style."
+    },
+    {
+      "id": 3,
+      "productName": "Topaz Guest Chair",
+      "imageUrl": "https://cdn.stocksnap.io/img-thumbs/280h/interior-chair_E3PW2UR6AE.jpg",
+      "productType": "Chair",
+      "price": 15000,
+      "description": "Lounge Chair is not as heavy as a sofa or as lightweight as a chair either. Its slightly reclined back lets you lean back in style."
+    },
+    {
+      "id": 4,
+      "productName": "Luxurious Sofa",
+      "imageUrl": "https://image.shutterstock.com/image-photo/modern-sofa-260nw-426909265.jpg",
+      "productType": "Sofa",
+      "price": "11999",
+      "description": "Mintwud was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles"
+    },
+    {
+      "id": 5,
+      "productName": "Meaden Sofa",
+      "imageUrl": "https://assets.architecturaldigest.in/photos/60083c12b3d78db39997d3b8/master/w_1600%2Cc_limit/sofa-design-budget-sofa-sofa-price-shopping_1.jpg",
+      "productType": "Sofa",
+      "price": 12000,
+      "description": "Mintwud was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles"
+    },
+    {
+      "id": 6,
+      "productName": "Adelle Sofa",
+      "imageUrl": "https://wakefit-co.s3.ap-south-1.amazonaws.com/dream-home-studio/wp-content/uploads/20210705162624/FOBL-1.jpg",
+      "productType": "Sofa",
+      "price": 15890,
+      "description": "Mintwud was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles"
+    },
+    {
+      "productName": "Magnolia Furniture Sofa",
+      "imageUrl": "https://i0.wp.com/magnoliahome.co.in/wp-content/uploads/2020/12/1.1-Almora-Sofa.jpg",
+      "productType": "Sofa",
+      "price": "21590",
+      "description": "Magnolia was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles",
+      "id": 7
+    }
+  ]
+}

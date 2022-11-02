@@ -1,0 +1,11 @@
+<form>
+    <div class="p-1 bg-light rounded rounded-pill mb-3">
+      <div class="input-group">
+        <input type="search" placeholder="What're you searching for?" class="form-control border-0 bg-light " name="search"
+        [(ngModel)]="enteredSearchValue" (input)="onSearchTextChanged()">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+</form>
