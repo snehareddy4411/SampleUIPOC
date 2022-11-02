@@ -1,0 +1,63 @@
+
+<div class="container" >
+    <legend style="text-align:center">Update Product Details</legend>
+    <div class="row">
+      <div class="col-lg-12 col-md-8 px-4" >
+        <form>
+          <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              name="productName"
+              [(ngModel)]="productData.productName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">Product Image</label>
+            <input
+              type="url"
+              class="form-control"
+              id="imageUrl"
+              name="imageUrl"
+              [(ngModel)]="productData.imageUrl"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="productType" class="form-label">Product Type</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productType"
+              name="productType"
+              [(ngModel)]="productData.productType"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              name="price"
+              [(ngModel)]="productData.price"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              name="description"
+              [(ngModel)]="productData.description"
+            />
+          </div>
+          <div class="text-center mb-3">
+            <button type="submit" class="btn btn-primary" (click)="updateProduct()">Update Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
