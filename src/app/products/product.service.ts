@@ -1,12 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { CartService } from "../cart/cart.service";
 import { Product } from "./Product";
 
 @Injectable()
 export class ProductService{
     private baseUrl = "api/products";
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient, private cartService:CartService) {}
 
     getProducts()
     {
@@ -32,4 +33,9 @@ export class ProductService{
     {
         return this.httpClient.put<Product>( this.baseUrl + '/' + id , product);
     }
+
+    // addToCart(product: Product)
+    // {
+    //    return this.cartService.addToCart(product);
+    // }
 }
