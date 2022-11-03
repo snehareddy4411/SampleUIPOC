@@ -47,15 +47,40 @@
       "price": 21590,
       "description": "Magnolia was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles",
       "id": 7
+    },
+    {
+      "productName": "Teak Round Dinning",
+      "imageUrl": "https://teaklab.com/wp-content/uploads/2019/08/Eleanor-Oak-Round-Soild-Wood-Table-and-Panel-Back-Chairs-5-piece-Dining-Set-by-iNSPIRE-Q-Classic-aefab9be-07ab-45e2-b183-544e582585c1.jpg",
+      "productType": "Dinning",
+      "price": "35989",
+      "description": "Add a beautiful, rustic look to your dining space with this round dining set from TeakLab.",
+      "id": 8
+    },
+    {
+      "productName": "Alcott Dinning Set",
+      "imageUrl": "https://stylesatlife.com/wp-content/uploads/2021/03/Small-Dining-Table-Design-1.jpg.webp",
+      "productType": "Dinning",
+      "price": "19999",
+      "description": "Alcott dinning was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles",
+      "id": 9
+    },
+    {
+      "productName": "Seesham Beds",
+      "imageUrl": "https://hometown.gumlet.io/media/product/11/5763/48678/1.jpg?mode=fill&w=189&h=189&dpr=2.6",
+      "productType": "Beds",
+      "price": "21899",
+      "description": "handcrafted by the finest artisans from Jodhpur/Jaipur. Woodgrain, color variance, texture changes and knots are all part of the charm of the product.",
+      "id": 10
     }
   ],
   "cart": [
     {
-      "id": 1,
-      "productName": "Magnolia Furniture Sofa",
-      "unitPrice": 21590,
-      "quantity": 2,
-      "grandTotal": 21590
+      "productName": "Alcott Dinning Set",
+      "unitPrice": "19999",
+      "quantity": 1,
+      "subTotal": 19999,
+      "imageUrl": "https://stylesatlife.com/wp-content/uploads/2021/03/Small-Dining-Table-Design-1.jpg.webp",
+      "id": 1
     }
   ]
 }

@@ -1,7 +1,8 @@
 export interface Cart
 {
     productName : string,
+    imageUrl: string,
     unitPrice: number,
     quantity : number,
-    grandTotal : number
+    subTotal: number
 }

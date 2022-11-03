@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsModule } from './products/products.module';
 import { CartComponent } from './cart/cart.component';
+import { BreadcrumbModule } from 'angular-crumbs';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CartComponent } from './cart/cart.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    BreadcrumbModule
   ],
   providers: [],
   exports: [],

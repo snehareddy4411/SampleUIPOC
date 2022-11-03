@@ -6,10 +6,11 @@ const routes: Routes = [
   { path:'' , redirectTo:'products', pathMatch:'full'},
   { 
     path: 'products',
-    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+    data: {breadcrumb: 'Home'}
   },
   {
-    path: 'cart', component: CartComponent
+    path: 'cart', component: CartComponent, data: {breadcrumb: 'Shopping Cart'}
   }
   // { path:'**' , component: NotFoundComponent},
 ];

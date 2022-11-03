@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from '../cart/Cart';
 import { CartService } from '../cart/cart.service';
-import { cartItem } from '../cart/CartItem';
 import { Product } from './Product';
 import { ProductService } from './product.service';
 
@@ -17,7 +16,8 @@ export class ProductsComponent implements OnInit {
     productName: '',
     unitPrice: 0,
     quantity: 0,
-    grandTotal: 0
+    subTotal: 0,
+    imageUrl: ''
   };
   searchText: string ='';
 
@@ -39,9 +39,13 @@ export class ProductsComponent implements OnInit {
   {
     if(window.confirm("Are you sure, you want to delete??"))
     {
-      this.productService.deleteProduct(id).subscribe((data) =>
-      {
-          
+      this.productService.deleteProduct(id).subscribe({
+        next: (data) => {
+          this.loadProducts();
+        },
+        error: (error) =>{
+          console.log(error);
+        }
       });
     }
   }
@@ -54,9 +58,10 @@ export class ProductsComponent implements OnInit {
   addToCart(product: Product)
   {
     this.cartItem.productName=product.productName;
+    this.cartItem.imageUrl = product.imageUrl;
     this.cartItem.quantity=1;
     this.cartItem.unitPrice=product.price;
-    this.cartItem.grandTotal=product.price * this.cartItem.quantity;
+    this.cartItem.subTotal=product.price * this.cartItem.quantity;
     this.cartService.addToCart(this.cartItem).subscribe({
       next: (data) => {
         this.router.navigate(["/cart"])

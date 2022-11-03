@@ -1,0 +1,16 @@
+.quantity
+{
+    padding-left: 8px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.quantity i
+{
+    color: black;
+}
+
+.btn
+{
+    background-color: #7B68EE;;
+}
