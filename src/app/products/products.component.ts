@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cart } from '../cart/Cart';
 import { CartService } from '../cart/cart.service';
+import { cartItem } from '../cart/CartItem';
 import { Product } from './Product';
 import { ProductService } from './product.service';
 
@@ -11,6 +13,12 @@ import { ProductService } from './product.service';
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
+  cartItem:Cart={
+    productName: '',
+    unitPrice: 0,
+    quantity: 0,
+    grandTotal: 0
+  };
   searchText: string ='';
 
   constructor(private productService: ProductService,private cartService: CartService, private router:Router) { }
@@ -45,7 +53,18 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product)
   {
-    this.cartService.addToCart(product);
+    this.cartItem.productName=product.productName;
+    this.cartItem.quantity=1;
+    this.cartItem.unitPrice=product.price;
+    this.cartItem.grandTotal=product.price * this.cartItem.quantity;
+    this.cartService.addToCart(this.cartItem).subscribe({
+      next: (data) => {
+        this.router.navigate(["/cart"])
+      },
+      error: (error) =>{
+        console.log(error);
+      }
+    })
   }
   
 }

@@ -8,24 +8,12 @@ import { Cart } from './Cart';
 })
 export class CartService {
   private baseUrl = "api/cart";
-  cart: Cart = {
-    productName: '',
-    unitPrice: 0,
-    quantity: 0,
-    grandTotal: 0
-  };
+  
 
   constructor(private httpClient:HttpClient) { }
-  addToCart(product: Product)
+  addToCart(cart: Cart)
   {
-    debugger;
-    this.cart.productName = product.productName;
-    this.cart.unitPrice = product.price;
-    this.cart.quantity = 1;
-    this.cart.grandTotal = product.price * this.cart.quantity;
-    console.log(this.cart);
-
-    return this.httpClient.post<Cart>(this.baseUrl,this.cart); 
+    return this.httpClient.post<Cart>(this.baseUrl,cart); 
   }
 
   getCart()
