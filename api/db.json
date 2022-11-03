@@ -44,7 +44,6 @@
       "productName": "Magnolia Furniture Sofa",
       "imageUrl": "https://i0.wp.com/magnoliahome.co.in/wp-content/uploads/2020/12/1.1-Almora-Sofa.jpg",
       "productType": "Sofa",
-<<<<<<< HEAD
       "price": 21590,
       "description": "Magnolia was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles",
       "id": 7
@@ -58,11 +57,5 @@
       "quantity": 2,
       "grandTotal": 21590
     }
-=======
-      "price": "21590",
-      "description": "Magnolia was conceptualized for compact homes which demand intelligent designs for small spaces, befitting modern lifestyles",
-      "id": 7
-    }
->>>>>>> b4e8c72ba48560e8b282ce50fb5d91e8927f64fb
   ]
 }
