@@ -7,9 +7,12 @@ const routes: Routes = [
   { 
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+<<<<<<< HEAD
   },
   {
     path: 'cart', component: CartComponent
+=======
+>>>>>>> b4e8c72ba48560e8b282ce50fb5d91e8927f64fb
   }
   // { path:'**' , component: NotFoundComponent},
 ];

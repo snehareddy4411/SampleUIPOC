@@ -1,13 +1,20 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+<<<<<<< HEAD
 import { CartService } from "../cart/cart.service";
+=======
+>>>>>>> b4e8c72ba48560e8b282ce50fb5d91e8927f64fb
 import { Product } from "./Product";
 
 @Injectable()
 export class ProductService{
     private baseUrl = "api/products";
 
+<<<<<<< HEAD
     constructor(private httpClient: HttpClient, private cartService:CartService) {}
+=======
+    constructor(private httpClient: HttpClient) {}
+>>>>>>> b4e8c72ba48560e8b282ce50fb5d91e8927f64fb
 
     getProducts()
     {
@@ -33,9 +40,12 @@ export class ProductService{
     {
         return this.httpClient.put<Product>( this.baseUrl + '/' + id , product);
     }
+<<<<<<< HEAD
 
     // addToCart(product: Product)
     // {
     //    return this.cartService.addToCart(product);
     // }
+=======
+>>>>>>> b4e8c72ba48560e8b282ce50fb5d91e8927f64fb
 }
