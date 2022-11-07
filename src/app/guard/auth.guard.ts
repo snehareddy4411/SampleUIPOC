@@ -27,6 +27,8 @@ export class AuthGuard extends KeycloakAuthGuard {
       let userDetails = await this.keycloak.loadUserProfile();
       console.log(userDetails);
       console.log(userDetails['attributes'].Role);
+      localStorage.setItem('UserName', userDetails.username);
+      localStorage.setItem('Role', userDetails['attributes'].Role)
       //console.log(userDetails.attributes.role);
     }
     return this.authenticated;
