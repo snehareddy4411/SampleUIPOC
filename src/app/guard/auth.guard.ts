@@ -22,8 +22,13 @@ export class AuthGuard extends KeycloakAuthGuard {
       await this.keycloak.login({
         redirectUri: window.location.origin + state.url,
       });
+    }   
+    if(this.authenticated){
+      let userDetails = await this.keycloak.loadUserProfile();
+      console.log(userDetails);
+      console.log(userDetails['attributes'].Role);
+      //console.log(userDetails.attributes.role);
     }
-
     return this.authenticated;
   }
 }
