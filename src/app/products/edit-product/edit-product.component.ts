@@ -21,7 +21,7 @@ export class EditProductComponent implements OnInit {
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    //this.getExistingProductData();
+    this.getExistingProductData();
   }
 
   getExistingProductData()

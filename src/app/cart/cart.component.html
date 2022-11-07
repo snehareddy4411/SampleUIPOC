@@ -18,9 +18,9 @@
                       <p class="lead fw-normal mb-2">{{cart.productName}}</p>
                     </div>
                     <div class="col-md-2 col-lg-3 col-xl-2 d-flex">
-                      <a class="quantity"  (click)="increamentQTY(cart.id,cart,cart.quantity)"><i class="fa fa-plus"></i></a>
+                      <a class="quantity"  (click)="increamentQTY(cart,cart.quantity)"><i class="fa fa-plus"></i></a>
                         {{ cart.quantity }}
-                      <a class="quantity" (click)="decrementQty(cart.id,cart,cart.quantity)"><i class="fa fa-minus"></i></a>
+                      <a class="quantity" (click)="decrementQty(cart,cart.quantity)"><i class="fa fa-minus"></i></a>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                       <h5 class="mb-0">{{cart.subTotal | currency: 'INR'}}</h5>

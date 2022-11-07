@@ -42,15 +42,15 @@ export class CartComponent implements OnInit {
     });
   }
 
-  increamentQTY(id,product, quantity): void {
+  increamentQTY(product, quantity): void {
     product.quantity = ++quantity;
     product.subTotal = product.unitPrice * product.quantity;
-    this.cartService.increaseQty(id,product).subscribe(() => {
+    this.cartService.increaseQty(product).subscribe(() => {
       this.loadCartItems();
     });
   }
 
-  decrementQty(id,product, quantity): void {
+  decrementQty(product, quantity): void {
     if(quantity<2)
     {
     }
@@ -58,7 +58,7 @@ export class CartComponent implements OnInit {
     {
       product.quantity = --quantity;
       product.subTotal = product.unitPrice * product.quantity;
-      this.cartService.decreaseQty(id,product).subscribe(() => {
+      this.cartService.decreaseQty(product).subscribe(() => {
         this.loadCartItems();
       });
     }

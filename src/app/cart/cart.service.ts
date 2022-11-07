@@ -30,13 +30,13 @@ export class CartService {
     return this.httpClient.put<Cart>(this.baseUrl, updatedItem);
   }
 
-  increaseQty(id, product) 
+  increaseQty(product) 
   {
-    return this.httpClient.put(this.baseUrl + '/'+id,product);
+    return this.httpClient.put(this.baseUrl ,product);
   }
 
-  decreaseQty(id, product)
+  decreaseQty(product)
   {
-    return this.httpClient.put(this.baseUrl + '/'+id,product);
+    return this.httpClient.put(this.baseUrl ,product);
   }
 }
