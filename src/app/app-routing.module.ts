@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
-  { path:'' , component: ProductsComponent, pathMatch:'full', canActivate: [AuthGuard]},
+  { path:'' , component: ProductsComponent, pathMatch:'full', canActivate:[AuthGuard]},
   { 
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),

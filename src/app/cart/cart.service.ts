@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Product } from '../products/Product';
 import { Cart } from './Cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private baseUrl = "api/cart";
+  //private baseUrl = "api/cart";
+  private baseUrl = "http://localhost:5005/EKartCart";
   
   constructor(private httpClient:HttpClient) { }
   addToCart(cart: Cart)
@@ -26,14 +25,18 @@ export class CartService {
     return this.httpClient.delete<Cart>(this.baseUrl + '/' +id);
   }
 
-  updateCartItems(cartId:number, updatedItem: Cart)
+  updateCartItems(updatedItem: Cart)
   {
-    return this.httpClient.put<Cart>(this.baseUrl + '/' + cartId , updatedItem);
+    return this.httpClient.put<Cart>(this.baseUrl, updatedItem);
   }
-  increaseQty(id,product) {
+
+  increaseQty(id, product) 
+  {
     return this.httpClient.put(this.baseUrl + '/'+id,product);
   }
-  decreaseQty(id,product){
+
+  decreaseQty(id, product)
+  {
     return this.httpClient.put(this.baseUrl + '/'+id,product);
   }
 }

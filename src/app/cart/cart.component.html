@@ -3,36 +3,38 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-10">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+            <h4 class="fw-normal mb-0 text-black">Shopping Cart ({{cartLength}} items in your cart )</h4>
           </div>
           <div *ngFor="let cart of cart">
             <div class="card rounded-3 mb-4">
-                <div class="card-body p-3">
+                <div class="card-body p-2">
                   <div class="row d-flex justify-content-between align-items-center">
                     <div class="col-md-2 col-lg-2 col-xl-2">
                       <img
                         src={{cart.imageUrl}}
-                        class="img-fluid rounded-3" alt="Cotton T-shirt">
+                        class="img-fluid rounded-3" alt={{cart.productName}} style="width: 80px;height:80px;">
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
                       <p class="lead fw-normal mb-2">{{cart.productName}}</p>
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                      <!-- <input type="number" min="1" class="form-control form-control-sm" 
-                      value={{cart.quantity}} #quantity (input)="quantityUpdated(cart.id,cart)"/> -->
-                      <a class="quantity" (click)="increamentQTY(cart.id,cart,cart.quantity)"><i class="fa fa-plus"></i></a>
+                    <div class="col-md-2 col-lg-3 col-xl-2 d-flex">
+                      <a class="quantity"  (click)="increamentQTY(cart.id,cart,cart.quantity)"><i class="fa fa-plus"></i></a>
                         {{ cart.quantity }}
                       <a class="quantity" (click)="decrementQty(cart.id,cart,cart.quantity)"><i class="fa fa-minus"></i></a>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                       <h5 class="mb-0">{{cart.subTotal | currency: 'INR'}}</h5>
                     </div>
-                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                    <div class="col-md-2 col-lg-1 col-xl-1 text-end me-2">
                       <a [routerLink]="['/']" class="text-danger" (click)="removeFromCart(cart.id)"><i class="fa fa-trash fa-lg"></i></a>
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
+          </div>
+
+          <div class="card rounded-3 mb-4" *ngIf="cartLength > 0">
+            <div class="card-body p-4 text-end text-uppercase">Order Total: {{total | currency: 'INR'}}</div>
           </div>
   
           <div class="text-center">

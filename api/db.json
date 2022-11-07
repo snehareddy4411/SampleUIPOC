@@ -75,11 +75,11 @@
   ],
   "cart": [
     {
-      "productName": "Alcott Dinning Set",
-      "unitPrice": "19999",
-      "quantity": 1,
-      "subTotal": 19999,
-      "imageUrl": "https://stylesatlife.com/wp-content/uploads/2021/03/Small-Dining-Table-Design-1.jpg.webp",
+      "productName": "Meaden Sofa",
+      "unitPrice": 12000,
+      "quantity": 3,
+      "subTotal": 36000,
+      "imageUrl": "https://assets.architecturaldigest.in/photos/60083c12b3d78db39997d3b8/master/w_1600%2Cc_limit/sofa-design-budget-sofa-sofa-price-shopping_1.jpg",
       "id": 1
     }
   ]

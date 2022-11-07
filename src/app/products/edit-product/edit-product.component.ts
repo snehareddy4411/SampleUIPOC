@@ -21,7 +21,7 @@ export class EditProductComponent implements OnInit {
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.getExistingProductData();
+    //this.getExistingProductData();
   }
 
   getExistingProductData()
@@ -36,7 +36,7 @@ export class EditProductComponent implements OnInit {
   {
     if(window.confirm("Are you sure you want to update "+this.productData.productName+" details ??"))
     {
-      this.productService.updateProduct(this.productId,this.productData).subscribe((data)=>
+      this.productService.updateProduct(this.productData).subscribe((data)=>
       {
         this.router.navigate(["/products"]);
       });

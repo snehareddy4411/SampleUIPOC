@@ -5,14 +5,15 @@ import { Product } from "./Product";
 
 @Injectable()
 export class ProductService{
-    private baseUrl = "api/products";
+    //private baseUrl = "api/products";
+    private baseUrl = "http://localhost:5262/EKartProduct";
     constructor(private httpClient: HttpClient) {}
 
     getProducts()
     {
         return this.httpClient.get<Product[]>(this.baseUrl);
-    }   
-    
+    }  
+
     getProduct(id: number)
     {
         return this.httpClient.get<Product>(this.baseUrl + '/' + id);
@@ -28,13 +29,10 @@ export class ProductService{
         return this.httpClient.delete<Product>(this.baseUrl + '/' +id);
     }
 
-    updateProduct(id: number, product: Product)
+    updateProduct(product: Product)
     {
-        return this.httpClient.put<Product>( this.baseUrl + '/' + id , product);
+        debugger;
+        return this.httpClient.put<Product>( this.baseUrl , product);
     }
 
-    // addToCart(product: Product)
-    // {
-    //    return this.cartService.addToCart(product);
-    // }
 }
