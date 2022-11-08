@@ -10,3 +10,13 @@ i
 {
     font-size: 21px;
 }
+#cart
+{
+    background-color: #7B68EE;
+    color: white;
+}
+#cart i
+{
+    font-size: 20px;
+    padding-right: 5px;
+}

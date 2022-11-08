@@ -8,6 +8,7 @@ import { Cart } from './Cart';
 export class CartService {
   //private baseUrl = "api/cart";
   private baseUrl = "http://localhost:5005/EKartCart";
+  cartlength: number = 0;
   
   constructor(private httpClient:HttpClient) { }
   addToCart(cart: Cart)
@@ -39,4 +40,15 @@ export class CartService {
   {
     return this.httpClient.put(this.baseUrl ,product);
   }
+
+  getCartItemById(id: number)
+  {
+    return this.httpClient.get<Cart>(this.baseUrl + '/' + id);
+  }
+
+  cartLength()
+  {
+    return this.httpClient.get<number>(this.baseUrl + '/CartLength');
+  }
+
 }

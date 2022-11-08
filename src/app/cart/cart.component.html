@@ -18,9 +18,9 @@
                       <p class="lead fw-normal mb-2">{{cart.productName}}</p>
                     </div>
                     <div class="col-md-2 col-lg-3 col-xl-2 d-flex">
-                      <a class="quantity"  (click)="increamentQTY(cart,cart.quantity)"><i class="fa fa-plus"></i></a>
-                        {{ cart.quantity }}
                       <a class="quantity" (click)="decrementQty(cart,cart.quantity)"><i class="fa fa-minus"></i></a>
+                        {{ cart.quantity }}
+                      <a class="quantity"  (click)="increamentQTY(cart,cart.quantity)"><i class="fa fa-plus"></i></a>
                     </div>
                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                       <h5 class="mb-0">{{cart.subTotal | currency: 'INR'}}</h5>
@@ -35,6 +35,10 @@
 
           <div class="card rounded-3 mb-4" *ngIf="cartLength > 0">
             <div class="card-body p-4 text-end text-uppercase">Order Total: {{total | currency: 'INR'}}</div>
+          </div>
+
+          <div class="card rounded-3 mb-4" *ngIf="cartLength <= 0" style="border: none;font-size: 18px;color: gray;">
+            <div class="card-body p-5 text-center" >Your cart is empty</div>
           </div>
   
           <div class="text-center">

@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { pipe } from 'rxjs';
 import { Cart } from './Cart';
 import { CartService } from './cart.service';
 
@@ -30,8 +29,6 @@ export class CartComponent implements OnInit {
       this.calculateTotal(this.cart,this.total=0);
       this.cartLength = data.length;
     }); 
-
-    
   }
 
   removeFromCart(id: number)
