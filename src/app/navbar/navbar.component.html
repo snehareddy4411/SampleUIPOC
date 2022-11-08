@@ -7,17 +7,14 @@
   
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="role == 'Admin'">
             <a class="nav-link" [routerLink]="['products/create-product']"><i class="fa fa-plus" aria-hidden="true"></i></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="role == 'Customer'">
             <a class="nav-link" [routerLink]="['cart']"><i class="fa fa-shopping-cart"></i></a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="#" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+          <li class="nav-item" >
+            <a class="nav-link" href="#" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>{{username}}</a>
           </li>
         </ul>
       </div>

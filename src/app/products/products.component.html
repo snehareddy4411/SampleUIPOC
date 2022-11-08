@@ -10,11 +10,11 @@
             <p class="card-text text-break">{{product.productName}}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" id="edit" class="btn btn-sm" routerLink='edit-product/{{product.id}}'><i
+                <button *ngIf="role == 'Admin'" type="button" id="edit" class="btn btn-sm" routerLink='edit-product/{{product.id}}'><i
                     class="fa fa-edit"></i></button>
-                <button type="button" id="delete" class="btn btn-sm" (click)="onDelete(product.id)"><i
+                <button *ngIf="role == 'Admin'" type="button" id="delete" class="btn btn-sm" (click)="onDelete(product.id)"><i
                     class="fa fa-trash"></i></button>
-                <button type="button" id="cart" class="btn btn-sm" (click)="addToCart(product)"><i
+                <button *ngIf="role == 'Customer'" type="button" id="cart" class="btn btn-sm" (click)="addToCart(product)"><i
                     class="fa fa-shopping-cart"></i></button>
               </div>
               <small>{{product.price | currency: 'INR'}}</small>

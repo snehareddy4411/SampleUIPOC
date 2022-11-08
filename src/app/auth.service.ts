@@ -13,5 +13,6 @@ export class AuthService {
     this.userName = localStorage.getItem('UserName');
     this.role = localStorage.getItem('Role');
     console.log('Username :'+this.userName +' Role: '+this.role);
+    return {userName : this.userName,role: this.role }
   }
 }

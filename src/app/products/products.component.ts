@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { Cart } from '../cart/Cart';
 import { CartService } from '../cart/cart.service';
 import { Product } from './Product';
@@ -20,10 +21,14 @@ export class ProductsComponent implements OnInit {
     imageUrl: ''
   };
   searchText: string ='';
+  username: string= '';
+  role: string= '';
 
-  constructor(private productService: ProductService,private cartService: CartService, private router:Router) { }
+  constructor(private productService: ProductService,private cartService: CartService, private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.username = this.authService.getUserNameRole().userName;
+    this.role = this.authService.getUserNameRole().role;
     this.loadProducts();
   }
 
