@@ -24,8 +24,13 @@ export class ProductsComponent implements OnInit {
   searchText: string = '';
   username: string = '';
   role: string = '';
+  cartLength = 0;
 
-  constructor(private productService: ProductService, private cartService: CartService, private router: Router, private authService: AuthService) { }
+  constructor(private productService: ProductService, private cartService: CartService, private router: Router, private authService: AuthService) { 
+    this.cartService.cartlength$.subscribe( updatedNumber => {
+      this.cartLength = updatedNumber
+    });
+  }
 
   ngOnInit(): void {
     this.username = this.authService.getUserNameRole().userName;
@@ -46,13 +51,15 @@ export class ProductsComponent implements OnInit {
     this.cartService.getCart().subscribe(
       response => {
         this.cartList = response;
+        this.cartLength = response.length;
+        this.cartService.cartlength$.next(this.cartLength);
       });
   }
   onDelete(id: number) {
     if (window.confirm("Are you sure, you want to delete??")) {
       this.productService.deleteProduct(id).subscribe({
-        next: (data) => {
-          this.loadProducts();
+        next: () => {
+          this.router.navigate(['/cart']);
         },
         error: (error) => {
           console.log(error);
@@ -63,14 +70,13 @@ export class ProductsComponent implements OnInit {
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
-    console.log(this.searchText);
   }
 
   addToCart(product: Product) {
     var productExistInCart = this.cartList.find(({ productName }) => productName === product.productName);
-    console.log(productExistInCart);
-    //if product is not in cart
+    
     if (!productExistInCart) {
+      //if product is not in cart
       this.cartItem.productName = product.productName;
       this.cartItem.imageUrl = product.imageUrl;
       this.cartItem.quantity = 1;
@@ -78,7 +84,7 @@ export class ProductsComponent implements OnInit {
       this.cartItem.subTotal = product.price * this.cartItem.quantity;
       this.cartService.addToCart(this.cartItem).subscribe({
         next: () => {
-          this.router.navigate(["/cart"])
+          this.loadCart();
         },
         error: (error) => {
           console.log(error);
@@ -87,6 +93,7 @@ export class ProductsComponent implements OnInit {
     }
     else
     {
+      //if product is in cart update the quantity
       productExistInCart.quantity += 1;
       productExistInCart.subTotal = product.price * productExistInCart.quantity;
       this.cartService.updateCartItems(productExistInCart).subscribe();

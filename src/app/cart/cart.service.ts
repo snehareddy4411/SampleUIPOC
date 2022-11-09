@@ -9,7 +9,7 @@ import { Cart } from './Cart';
 export class CartService {
   //private baseUrl = "api/cart";
   private baseUrl = "http://localhost:5005/EKartCart";
-  lengthOfCart$ = new Subject<number>();
+  cartlength$ = new Subject<number>(); 
   
   constructor(private httpClient:HttpClient) {  }
   addToCart(cart: Cart)

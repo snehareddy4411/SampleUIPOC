@@ -3,7 +3,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-10">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="fw-normal mb-0 text-black">Shopping Cart ({{lengthOfCart}} items in your cart )</h4>
+            <h4 class="fw-normal mb-0 text-black">Shopping Cart ({{cartLength}} items in your cart )</h4>
           </div>
           <div *ngFor="let cart of cart">
             <div class="card rounded-3 mb-4">
@@ -33,11 +33,11 @@
             </div>
           </div>
 
-          <div class="card rounded-3 mb-4" *ngIf="lengthOfCart > 0">
+          <div class="card rounded-3 mb-4" *ngIf="cartLength> 0">
             <div class="card-body p-4 text-end text-uppercase">Order Total: {{total | currency: 'INR'}}</div>
           </div>
 
-          <div class="card rounded-3 mb-4" *ngIf="lengthOfCart <= 0" style="border: none;font-size: 18px;color: gray;">
+          <div class="card rounded-3 mb-4" *ngIf="cartLength <= 0" style="border: none;font-size: 18px;color: gray;">
             <div class="card-body p-5 text-center" >Your cart is empty</div>
           </div>
   
