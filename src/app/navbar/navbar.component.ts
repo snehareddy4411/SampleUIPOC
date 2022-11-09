@@ -11,22 +11,29 @@ import { CartService } from '../cart/cart.service';
 export class NavbarComponent implements OnInit {
   username: string= '';
   role: string= '';
-  cartlength: number = 0;
+  lengthOfCart : number = 0;
 
-  constructor(protected readonly keycloak: KeycloakService, private authService:AuthService,private cartService:CartService) { }
+  constructor(protected readonly keycloak: KeycloakService, private authService:AuthService,private cartService:CartService) 
+  {
+    this.cartService.getCart().subscribe( (data) =>{
+      this.lengthOfCart = data.length;
+    }); 
+  }
 
   ngOnInit(): void {
-    this.cartService.cartLength().subscribe((data) =>
-    {
-      this.cartlength = data;
-      console.log(this.cartlength)
-    })
+    this.cartService.lengthOfCart$.subscribe( lengthOfCart => {
+      this.lengthOfCart = lengthOfCart;
+    });
     this.username = this.authService.getUserNameRole().userName;
     this.role = this.authService.getUserNameRole().role;
   }
+
   public logout() {
+    localStorage.removeItem('Username');
     this.keycloak.logout();
   }
+
+  
 }
 
 

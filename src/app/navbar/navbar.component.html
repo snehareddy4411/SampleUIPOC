@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg py-3" *ngIf="username != ''">
+<nav class="navbar navbar-expand-lg py-3">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['products']"><strong>Furniture E-Commerce</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
             <a class="nav-link" [routerLink]="['cart']" >
               <i class="fa fa-shopping-cart position-relative">
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 12px;">
-                  {{cartlength}}
+                  {{lengthOfCart}}
                 </span>
               </i>
             </a>

@@ -14,28 +14,35 @@ export class CartComponent implements OnInit {
   total: number = 0 ;
   value: number = 0;
   @ViewChild('quantity') quantity:ElementRef;
+  lengthOfCart : number = 0;
 
-  constructor(private cartService:CartService,private router:Router) { }
+  constructor(private cartService:CartService,private router:Router) { this.loadCartItems(); }
 
   ngOnInit(): void {
-    this.loadCartItems();
+    
   }
 
   loadCartItems()
   {
     this.cartService.getCart().subscribe((data) =>
     {
+      debugger;
       this.cart = data;
+      this.lengthOfCart = data.length;
       this.calculateTotal(this.cart,this.total=0);
-      this.cartLength = data.length;
+      this.cartService.lengthOfCart$.subscribe();
+      this.cartService.lengthOfCart$.next(this.lengthOfCart);
+      console.log("Cart length updated in Cart" + this.lengthOfCart);
     }); 
+    
   }
 
   removeFromCart(id: number)
   {
-    this.cartService.removeFromCart(id).subscribe((data) =>
+    this.cartService.removeFromCart(id).subscribe(() =>
     {
-      this.router.navigate(['/cart']);
+      this.loadCartItems();
+      //this.router.navigate(['/cart']);
     });
   }
 

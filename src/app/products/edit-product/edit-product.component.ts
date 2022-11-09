@@ -34,7 +34,7 @@ export class EditProductComponent implements OnInit {
 
   updateProduct()
   {
-    if(window.confirm("Are you sure you want to update "+this.productData.productName+" details ??"))
+    if(window.confirm("Are you sure you want to update details??"))
     {
       this.productService.updateProduct(this.productData).subscribe((data)=>
       {

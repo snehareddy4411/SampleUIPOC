@@ -31,6 +31,7 @@ export class AuthGuard extends KeycloakAuthGuard {
       localStorage.setItem('Role', userDetails['attributes'].Role)
       //console.log(userDetails.attributes.role);
     }
+
     return this.authenticated;
   }
 }

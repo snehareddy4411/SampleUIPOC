@@ -31,11 +31,7 @@ export class ProductsComponent implements OnInit {
     this.username = this.authService.getUserNameRole().userName;
     this.role = this.authService.getUserNameRole().role;
     this.loadProducts();
-    this.cartService.getCart().subscribe(
-      response => {
-        this.cartList = response
-      });
-
+    this.loadCart();
   }
 
   loadProducts() {
@@ -45,6 +41,13 @@ export class ProductsComponent implements OnInit {
       });
   }
 
+  loadCart()
+  {
+    this.cartService.getCart().subscribe(
+      response => {
+        this.cartList = response;
+      });
+  }
   onDelete(id: number) {
     if (window.confirm("Are you sure, you want to delete??")) {
       this.productService.deleteProduct(id).subscribe({
@@ -74,7 +77,7 @@ export class ProductsComponent implements OnInit {
       this.cartItem.unitPrice = product.price;
       this.cartItem.subTotal = product.price * this.cartItem.quantity;
       this.cartService.addToCart(this.cartItem).subscribe({
-        next: (data) => {
+        next: () => {
           this.router.navigate(["/cart"])
         },
         error: (error) => {

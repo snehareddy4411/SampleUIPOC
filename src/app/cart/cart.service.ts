@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Cart } from './Cart';
 
 @Injectable({
@@ -8,9 +9,9 @@ import { Cart } from './Cart';
 export class CartService {
   //private baseUrl = "api/cart";
   private baseUrl = "http://localhost:5005/EKartCart";
-  cartlength: number = 0;
+  lengthOfCart$ = new Subject<number>();
   
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) {  }
   addToCart(cart: Cart)
   {
     return this.httpClient.post<Cart>(this.baseUrl,cart); 
