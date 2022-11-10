@@ -64,7 +64,7 @@ export class ProductsComponent implements OnInit {
     if (window.confirm("Are you sure, you want to delete??")) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
-          this.router.navigate(['/cart']);
+         this.loadProducts();
         },
         error: (error) => {
           console.log(error);

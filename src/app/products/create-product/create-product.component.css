@@ -6,3 +6,12 @@ label,legend,button
 {
     background-color: #7B68EE;;
 }
+.error-message 
+{
+    color: red;
+    font-size: 14px;
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+    background-color: #fce4e4;
+  }

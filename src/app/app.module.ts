@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsModule } from './products/products.module';
 import { CartComponent } from './cart/cart.component';
-import { BreadcrumbModule } from 'angular-crumbs';
 import { LoginComponent } from './login/login.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
@@ -15,7 +14,7 @@ function initializeKeycloak(keycloak: KeycloakService){
   return() =>
   keycloak.init({
     config:{
-      url:'http://localhost:8080/auth',
+      url:'http://localhost:8280/auth',
       realm: 'TeamOne',
       clientId: 'TeamOne'
     },
@@ -37,7 +36,6 @@ function initializeKeycloak(keycloak: KeycloakService){
     AppRoutingModule,
     HttpClientModule,
     ProductsModule,
-    BreadcrumbModule,
     KeycloakAngularModule
   ],
   providers: [
