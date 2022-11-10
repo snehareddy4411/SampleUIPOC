@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { Cart } from '../cart/Cart';
 import { CartService } from '../cart/cart.service';
+import { AuthGuard } from '../guard/auth.guard';
 import { Product } from './Product';
 import { ProductService } from './product.service';
 
@@ -22,19 +22,24 @@ export class ProductsComponent implements OnInit {
     imageUrl: ''
   };
   searchText: string = '';
-  username: string = '';
   role: string = '';
   cartLength = 0;
 
-  constructor(private productService: ProductService, private cartService: CartService, private router: Router, private authService: AuthService) { 
+  constructor(private productService: ProductService, 
+    private cartService: CartService, 
+    private router: Router, 
+    private authGuardService: AuthGuard) { 
     this.cartService.cartlength$.subscribe( updatedNumber => {
       this.cartLength = updatedNumber
     });
   }
 
   ngOnInit(): void {
-    this.username = this.authService.getUserNameRole().userName;
-    this.role = this.authService.getUserNameRole().role;
+    this.role = this.authGuardService.role;
+    this.authGuardService.variableChange
+      .subscribe(res=>{
+            this.role = res['Role'];
+      });
     this.loadProducts();
     this.loadCart();
   }

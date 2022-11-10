@@ -10,10 +10,10 @@ const routes: Routes = [
   { 
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
-    data: {breadcrumb: 'Home'}
+    data: {breadcrumb: 'Home'}, canActivate: [AuthGuard]
   },
   {
-    path: 'cart', component: CartComponent, data: {breadcrumb: 'Shopping Cart'}
+    path: 'cart', component: CartComponent, data: {breadcrumb: 'Shopping Cart'},canActivate: [AuthGuard]
   }
   // { path:'**' , component: NotFoundComponent},
 ];
