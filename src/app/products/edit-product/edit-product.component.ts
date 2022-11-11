@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from 'src/app/notification.service';
 import { Product } from '../Product';
 import { ProductService } from '../product.service';
 
@@ -18,7 +20,9 @@ export class EditProductComponent implements OnInit {
     description: ''
   } ;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService, 
+    private activatedRoute: ActivatedRoute,
+    private router: Router, private toastr:NotificationService) { }
 
   ngOnInit(): void {
     this.getExistingProductData();
@@ -34,14 +38,12 @@ export class EditProductComponent implements OnInit {
 
   updateProduct()
   {
-    if(window.confirm("Are you sure you want to update details??"))
-    {
-      this.productService.updateProduct(this.productData).subscribe((data)=>
+    this.productService.updateProduct(this.productData).subscribe((data)=>
       {
+        this.toastr.showSuccess("Product updated Successfully");
         this.router.navigate(["/products"]);
       });
-    }
-
   }
+
 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Cart } from '../cart/Cart';
 import { CartService } from '../cart/cart.service';
 import { AuthGuard } from '../guard/auth.guard';
+import { NotificationService } from '../notification.service';
 import { Product } from './Product';
 import { ProductService } from './product.service';
 
@@ -27,8 +27,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ProductService, 
     private cartService: CartService, 
-    private router: Router, 
-    private authGuardService: AuthGuard) { 
+    private authGuardService: AuthGuard,
+    private toastr:NotificationService) { 
     this.cartService.cartlength$.subscribe( updatedNumber => {
       this.cartLength = updatedNumber
     });
@@ -61,16 +61,15 @@ export class ProductsComponent implements OnInit {
       });
   }
   onDelete(id: number) {
-    if (window.confirm("Are you sure, you want to delete??")) {
       this.productService.deleteProduct(id).subscribe({
         next: () => {
-         this.loadProducts();
+          this.toastr.showSuccess("Product deleted successfully.");
+          this.loadProducts();
         },
         error: (error) => {
           console.log(error);
         }
       });
-    }
   }
 
   onSearchTextEntered(searchValue: string) {

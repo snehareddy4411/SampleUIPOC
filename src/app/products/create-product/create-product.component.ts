@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/notification.service';
 import { Product } from '../Product';
 import { ProductService } from '../product.service';
 
@@ -10,7 +11,7 @@ import { ProductService } from '../product.service';
 })
 export class CreateProductComponent implements OnInit {
 
-  constructor(private productService:ProductService, private router: Router) { }
+  constructor(private productService:ProductService, private router: Router,private toastr:NotificationService) { }
   createProductForm: Product ={
     productName: '',
     imageUrl: '',
@@ -24,11 +25,11 @@ export class CreateProductComponent implements OnInit {
 
   create()
   {
-    console.log(this.createProductForm);
     this.productService.createProduct(this.createProductForm)
     .subscribe({
       next: (data) => {
-        this.router.navigate(["/products"])
+        this.toastr.showSuccess("Product created successfully.");
+        this.router.navigate(["/products"]);
       },
       error: (error) =>{
         console.log(error);
