@@ -35,6 +35,19 @@ export class AuthGuard extends KeycloakAuthGuard {
       let userCache = {'UserName': userDetails.username, 'Role': userDetails['attributes'].Role,
       'IsLoggedIn': this.authenticated};
       this.variableChange.next(userCache);
+
+      let currentroute = state.url;
+
+      if (this.role[0].toLowerCase() == 'admin'){        
+        if (currentroute == '/cart'){
+          this.router.navigate(['products']);
+        }
+      }else if (this.role[0].toLowerCase() == 'customer'){
+        if (currentroute.includes('create-product')
+          || currentroute.includes('/edit-product')){
+          this.router.navigate(['products']);
+        }
+      }
     }
 
     return this.authenticated;
