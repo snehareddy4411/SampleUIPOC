@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { ToastrModule } from 'ngx-toastr';
 
+
 function initializeKeycloak(keycloak: KeycloakService){
   return() =>
   keycloak.init({
