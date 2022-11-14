@@ -5,6 +5,7 @@ import { AuthGuard } from '../guard/auth.guard';
 import { NotificationService } from '../notification.service';
 import { Product } from './Product';
 import { ProductService } from './product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -25,11 +26,12 @@ export class ProductsComponent implements OnInit {
   role: string = '';
   cartLength = 0;
 
-  constructor(private productService: ProductService, 
-    private cartService: CartService, 
+  constructor(private productService: ProductService,
+    private cartService: CartService,
     private authGuardService: AuthGuard,
-    private toastr:NotificationService) { 
-    this.cartService.cartlength$.subscribe( updatedNumber => {
+    private toastr: NotificationService,
+    ) {
+    this.cartService.cartlength$.subscribe(updatedNumber => {
       this.cartLength = updatedNumber
     });
   }
@@ -37,8 +39,8 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.authGuardService.role;
     this.authGuardService.variableChange
-      .subscribe(res=>{
-            this.role = res['Role'];
+      .subscribe(res => {
+        this.role = res['Role'];
       });
     this.loadProducts();
     this.loadCart();
@@ -51,8 +53,7 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  loadCart()
-  {
+  loadCart() {
     this.cartService.getCart().subscribe(
       response => {
         this.cartList = response;
@@ -61,15 +62,25 @@ export class ProductsComponent implements OnInit {
       });
   }
   onDelete(id: number) {
-      this.productService.deleteProduct(id).subscribe({
-        next: () => {
-          this.toastr.showSuccess("Product deleted successfully.");
-          this.loadProducts();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+    Swal.fire({
+      title: 'Are you sure you want to delete?',
+      showCancelButton: true,
+      confirmButtonColor: '#DC143C',
+      confirmButtonText: 'Yes, delete it',
+      customClass: {
+        title: 'custom-title-class',
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.deleteProduct(id).subscribe({
+            next: () => {
+              this.toastr.showSuccess("Product deleted successfully.");
+              this.loadProducts();
+            }
+          });
+      } else if (result.isDenied) {
+      }
+    })
   }
 
   onSearchTextEntered(searchValue: string) {
@@ -78,7 +89,7 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product) {
     var productExistInCart = this.cartList.find(({ productName }) => productName === product.productName);
-    
+
     if (!productExistInCart) {
       //if product is not in cart
       this.cartItem.productName = product.productName;
@@ -95,8 +106,7 @@ export class ProductsComponent implements OnInit {
         }
       });
     }
-    else
-    {
+    else {
       //if product is in cart update the quantity
       productExistInCart.quantity += 1;
       productExistInCart.subTotal = product.price * productExistInCart.quantity;
