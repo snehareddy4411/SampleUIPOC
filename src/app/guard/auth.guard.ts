@@ -39,17 +39,16 @@ export class AuthGuard extends KeycloakAuthGuard {
       let currentroute = state.url;
 
       if (this.role[0].toLowerCase() == 'admin'){        
-        if (currentroute == '/cart'){
+        if ((currentroute == '/cart') || (currentroute.includes('/home'))){
           this.router.navigate(['products']);
         }
       }else if (this.role[0].toLowerCase() == 'customer'){
         if (currentroute.includes('create-product')
-          || currentroute.includes('/edit-product')){
+          || currentroute.includes('/edit-product') || (currentroute.includes('/home'))){
           this.router.navigate(['products']);
         }
       }
     }
-
     return this.authenticated;
   }
 }

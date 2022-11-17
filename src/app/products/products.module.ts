@@ -25,6 +25,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     RouterModule
   ],
   providers:[ProductService],
-  exports:[ProductsComponent]
+  exports:[ProductsComponent,SearchComponent,Ng2SearchPipeModule]
 })
 export class ProductsModule { }

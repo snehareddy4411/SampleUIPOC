@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
 import { CartComponent } from './cart/cart.component';
-import { ProductsComponent } from './products/products.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path:'' , component: ProductsComponent, pathMatch:'full',canActivate: [AuthGuard]},
+  { path:'' , redirectTo: '/home' , pathMatch:'full'},
+  {
+    path:'home',component: HomeComponent
+  },
   { 
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),

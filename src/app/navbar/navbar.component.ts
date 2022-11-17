@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
 import { CartService } from '../cart/cart.service';
 import { AuthGuard } from '../guard/auth.guard';
@@ -12,11 +13,13 @@ export class NavbarComponent implements OnInit {
   username: string= '';
   role: string= '';
   cartLength = 0;
-  isNavbarVisible = false;
+  //isNavbarVisible = false;
+  userLoggedIn = false;
 
   constructor(protected readonly keycloak: KeycloakService, 
     private cartService:CartService,
-    private authGuardService: AuthGuard) 
+    private authGuardService: AuthGuard,
+    private router:Router) 
   {
     this.cartService.cartlength$.subscribe( updatedNumber => {
       this.cartLength = updatedNumber
@@ -29,11 +32,13 @@ export class NavbarComponent implements OnInit {
       .subscribe(res=>{
           console.log(res); 
           if (res['IsLoggedIn']){
-            this.isNavbarVisible = true;
+            this.userLoggedIn = true;
+            //this.isNavbarVisible = true;
             this.username = res['UserName'];
             this.role = res['Role']
           }else{
-            this.isNavbarVisible = false;
+            this.userLoggedIn = false;
+            //this.isNavbarVisible = false;
             this.username = '';
             this.role = '';
           }
@@ -44,7 +49,4 @@ export class NavbarComponent implements OnInit {
     this.keycloak.logout();
   }
 
-  
 }
-
-

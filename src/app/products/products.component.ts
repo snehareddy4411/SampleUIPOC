@@ -29,8 +29,7 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService,
     private cartService: CartService,
     private authGuardService: AuthGuard,
-    private toastr: NotificationService,
-    ) {
+    private toastr: NotificationService) {
     this.cartService.cartlength$.subscribe(updatedNumber => {
       this.cartLength = updatedNumber
     });
@@ -67,9 +66,6 @@ export class ProductsComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#DC143C',
       confirmButtonText: 'Yes, delete it',
-      customClass: {
-        title: 'custom-title-class',
-      }
     }).then((result) => {
       if (result.isConfirmed) {
         this.productService.deleteProduct(id).subscribe({
