@@ -14,17 +14,10 @@ export class HomeComponent implements OnInit {
   products: Product[];
   loggedIn: boolean;
 
-  constructor(private productService:ProductService, private authGuardService:AuthGuard,private router:Router) { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
     this.loadProducts();
-    this.authGuardService.variableChange.subscribe(res =>{
-      if(res['IsLoggedIn'])
-      {
-        //this.loggedIn = true;
-        this.router.navigate(['/products']);
-      }
-    });
   }
   loadProducts() {
     this.productService.getProducts().subscribe(

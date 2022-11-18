@@ -2,3 +2,20 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 400;
 }
+.spinner {
+    border: 16px solid silver;
+    border-top: 16px solid #222;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 700ms linear infinite;
+    top:50%;
+    left:50%;
+    position: absolute;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(-360deg) }
+  }
+  
