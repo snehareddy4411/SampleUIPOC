@@ -9,7 +9,9 @@ import { ProductsModule } from './products/products.module';
 import { CartComponent } from './cart/cart.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { ToastrModule } from 'ngx-toastr';
-
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 function initializeKeycloak(keycloak: KeycloakService){
   return() =>
@@ -21,7 +23,7 @@ function initializeKeycloak(keycloak: KeycloakService){
     },
     initOptions:{
       checkLoginIframe: false
-    }
+    },
   });
 }
 
@@ -30,6 +32,9 @@ function initializeKeycloak(keycloak: KeycloakService){
     AppComponent,
     NavbarComponent,
     CartComponent,
+    HomeComponent,
+    AboutComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
