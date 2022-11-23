@@ -6,6 +6,7 @@ import { NotificationService } from '../notification.service';
 import { Product } from './Product';
 import { ProductService } from './product.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -29,14 +30,17 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService,
     private cartService: CartService,
     private authGuardService: AuthGuard,
-    private toastr: NotificationService) {
+    private toastr: NotificationService,
+    private router: Router) {
     this.cartService.cartlength$.subscribe(updatedNumber => {
       this.cartLength = updatedNumber
     });
   }
 
   ngOnInit(): void {
-    this.role = this.authGuardService.role;
+    
+    if(this.authGuardService.role){ this.role = this.authGuardService.role ; console.log("products ngonit if"+this.role)}
+    else { this.role = ''; console.log("products ngonit else"+this.role) }
     this.authGuardService.variableChange
       .subscribe(res => {
         this.role = res['Role'];
@@ -84,7 +88,19 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    var productExistInCart = this.cartList.find(({ productName }) => productName === product.productName);
+    if(this.role == '')
+    {
+      this.router.navigate(['/login'])
+      this.addToCartBL(product);
+    }
+    else
+    {
+      this.addToCartBL(product);
+    }
+  }
+
+  addToCartBL(product: Product){
+      var productExistInCart = this.cartList.find(({ productName }) => productName === product.productName);
 
     if (!productExistInCart) {
       //if product is not in cart

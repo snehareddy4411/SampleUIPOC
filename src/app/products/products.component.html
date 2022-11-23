@@ -14,7 +14,7 @@
                     class="fa fa-edit"></i></button>
                 <button *ngIf="role == 'Admin'" type="button" id="delete" class="btn btn-sm" (click)="onDelete(product.id)"><i
                     class="fa fa-trash"></i></button>
-                <button *ngIf="role == 'Customer'" type="button" id="cart" class="btn" (click)="addToCart(product)">
+                <button *ngIf="role == 'Customer' || role == '' " type="button" id="cart" class="btn" (click)="addToCart(product)">
                   <i class="fa fa-shopping-cart"></i>Add to Cart</button>
               </div>
               <small>{{product.price | currency: 'INR'}}</small>

@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
   }
 
   public logout() {
-    this.keycloak.logout();
+    this.keycloak.logout('http://localhost:4200/products');
   }
 
 }
